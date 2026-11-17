@@ -15,7 +15,7 @@ site: build/sitegen
 check: site
 	@set -eu; for page in $(PAGES); do test -s "public/$$page"; done
 	@test -s public/assets/site.css
-	@grep -q '9:30 am' public/index.html
+	@grep -q '9.30am' public/index.html
 	@echo 'All seven generated pages verified'
 clean:
 	rm -rf build public
