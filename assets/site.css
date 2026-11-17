@@ -64,15 +64,15 @@ h1,h2,h3,.page-title,.mobile-services{font-family:"Roboto Condensed",Arial,Helve
 /* Homepage source fidelity: navigation is OVER the hero, not a separate dark bar.
    This mirrors the original builder's absolutely positioned navigation-3 section
    and 100vh image-backed cover section. Other pages retain their opaque header. */
-.home .site-header{position:absolute;top:0;left:0;right:0;width:100%;background:transparent;color:#fff;z-index:5}
+.home .site-header{position:fixed;top:0;left:0;right:0;width:100%;background:transparent;color:#fff;z-index:5;transition:background-color .2s ease}
 .home .header-inner{min-height:120px;align-items:flex-start;padding:7px 15px}
 .home .brand img{width:110px;height:110px}
 .home .site-nav{padding-top:35px;align-content:flex-start}
 .home .site-nav>a{color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35)}
 .home .site-nav .call{text-shadow:none}
-.home .photo-hero{background-position:center top;background-size:cover;background-repeat:no-repeat}
+.home .photo-hero{background-position:center center;background-size:cover;background-repeat:no-repeat}
 .home .service-heading{
-  display:block;position:absolute;left:49%;top:62%;width:35%;margin:0;
+  display:block;position:absolute;left:49%;top:51.5%;width:35%;margin:0;
   color:#980015;text-align:center;font-family:"Roboto Condensed",Arial,Helvetica,sans-serif;
   font-weight:700;font-size:clamp(44px,4.5vw,78px);line-height:1.12;letter-spacing:-.012em;
   text-shadow:0 1px 1px rgba(255,255,255,.24);
@@ -100,3 +100,12 @@ h1,h2,h3,.page-title,.mobile-services{font-family:"Roboto Condensed",Arial,Helve
   .home .photo-hero{height:100svh;min-height:520px;background-position:center top}
   .home .service-heading{top:auto;bottom:11%;left:10%;right:10%;width:80%;font-size:clamp(32px,7vw,54px);text-shadow:0 1px 2px rgba(255,255,255,.5)}
 }
+
+/* Reproduce the original builder's 'kv-scrolled' navigation behaviour. */
+.home .site-header.is-scrolled{background:#292e31}
+.home .site-header.is-scrolled .header-inner{min-height:68px;align-items:center}
+.home .site-header.is-scrolled .brand img{width:61px;height:61px}
+.home .site-header.is-scrolled .site-nav{padding-top:0}
+.interior .site-header{position:sticky;top:0}
+@media(max-width:1250px){.home .site-header.is-scrolled .header-inner{min-height:68px;flex-direction:row;align-items:center}.home .site-header.is-scrolled .site-nav{padding-top:0}}
+@media(max-width:700px){.home .site-header.is-scrolled .header-inner{flex-direction:column;align-items:flex-start;min-height:90px}.home .site-header.is-scrolled .brand img{width:48px;height:48px}.home .site-header.is-scrolled .site-nav{max-width:calc(100vw - 24px)}}

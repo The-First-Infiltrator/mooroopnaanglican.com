@@ -21,6 +21,8 @@ check: site
 	@grep -q 'class="service-heading"' public/index.html
 	@grep -q 'Sundays 9.30am &amp;' public/index.html
 	@grep -q 'position:absolute;top:0;left:0' public/assets/site.css
+	@grep -q "is-scrolled" public/index.html
+	@grep -q "background-position:center center" public/assets/site.css
 	@echo 'All seven generated pages verified'
 clean:
 	rm -rf build public
