@@ -60,17 +60,29 @@ R"HTM(
   };
 }
 std::string make_html(const Page& p) {
-  std::string html=R"HTM(<!doctype html><html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#183e35"><link rel="stylesheet" href="assets/site.css"><title>)HTM";
-  html += p.name + " | Saint Alban's Anglican Church</title></head><body>";
-  html += R"HTM(<a class="skip" href="#main">Skip to content</a><header><div class="wrap head"><a class="brand" href="index.html"><span class="mark">✦</span><span><strong>Saint Alban's</strong><small>Anglican Church · Mooroopna</small></span></a><nav aria-label="Main navigation">)HTM";
-  for (const auto& item:menu) {
-    html+="<a href=\""+item.first+"\"";
-    if(p.path==item.first) html+=" aria-current=\"page\"";
-    html+=">"+item.second+"</a>";
+  const bool is_home = p.path == "index.html";
+  std::string html = R"HTM(<!doctype html><html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#2b2f31"><meta name="description" content="Saint Alban's Anglican Church, Mooroopna. Sunday services at 9:30am and 5pm."><link rel="stylesheet" href="assets/site.css"><title>)HTM";
+  html += p.name + " - Saint Alban's Anglican Church</title></head><body class=\"";
+  html += is_home ? "home" : "interior";
+  html += R"HTM("><a class="skip" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="index.html" aria-label="Saint Alban's Anglican Church home"><img src="assets/saint-albans-logo.webp" alt="Saint Alban's at the Canteen logo" width="64" height="64"></a><nav class="site-nav" aria-label="Main navigation">)HTM";
+  for (const auto& item : menu) {
+    html += "<a href=\"" + item.first + "\"";
+    if (p.path == item.first) html += " aria-current=\"page\"";
+    html += ">" + item.second + "</a>";
   }
-  html += "</nav></div></header><main id=\"main\"><section class=\"hero\"><div class=\"wrap hero-inner\"><p class=\"eyebrow\">Saint Alban's Anglican Church · Mooroopna</p><h1>"+p.heading+"</h1><p class=\"lead\">"+p.intro+"</p></div></section>";
-  html += "<div class=\"wrap content\">"+p.content+"</div></main>";
-  html += R"HTM(<footer><div class="wrap foot"><div><strong>Saint Alban's Anglican Church</strong><p>Radical hospitality · Sacrificial generosity · Holding fast to Jesus</p><p>9–17 Young Street, Mooroopna VIC 3629</p></div><div><p><a href="tel:+61358252031">(03) 5825 2031</a></p><p><a href="mailto:simon@mooroopnaanglican.com">simon@mooroopnaanglican.com</a></p><p><a href="https://www.bendigoanglican.org.au/">Anglican Diocese of Bendigo</a></p></div></div><div class="wrap foot-bottom">© 2026 Saint Alban's Anglican Church · Preview website</div></footer></body></html>)HTM";
+  html += R"HTM(<a href="https://www.bendigoanglican.org.au/">Anglican Diocese of Bendigo</a><a href="https://www.gslp.com.au/">Family Haven</a><a href="https://www.teenchallenge.com.au/">Teen Challenge</a><a href="https://orangesky.org.au/">Orange Sky</a><a class="call" href="tel:+61358252031">Call</a></nav></div></header><main id="main">)HTM";
+  if (is_home) {
+    html += R"HTM(<section class="photo-hero" aria-label="Saint Alban's church building"><h1 class="visually-hidden">Sundays 9.30am &amp; 5pm</h1><div class="mobile-services" aria-hidden="true">Sundays 9.30am &amp; 5pm</div></section>)HTM";
+  } else {
+    html += "<div class=\"page-body\"><div class=\"content\">";
+    html += "<h1 class=\"page-title\">" + p.heading + "</h1>";
+    if (p.path == "team.html") html += "<p class=\"team-motto\">Radical Hospitality - Sacrificial Generosity - Holding fast to Jesus</p>";
+    if (p.path != "news.html") html += p.content;
+    html += "</div></div>";
+  }
+  html += R"HTM(</main><footer class="site-footer"><div class="footer-inner"><h2>Saint Alban's Anglican Church</h2><nav class="footer-nav" aria-label="Footer navigation">)HTM";
+  for (const auto& item : menu) html += "<a href=\"" + item.first + "\">" + item.second + "</a>";
+  html += R"HTM(<a href="https://www.bendigoanglican.org.au/">Anglican Diocese of Bendigo</a><a href="https://www.gslp.com.au/">Family Haven</a><a href="https://www.teenchallenge.com.au/">Teen Challenge</a><a href="https://orangesky.org.au/">Orange Sky</a></nav><section class="footer-contact"><h3>Address</h3><p>9 - 17 Young St<br>Mooroopna 3629, AU</p><p><a href="tel:+61358252031">(03) 5825 2031</a> <a href="mailto:simon@mooroopnaanglican.com">simon@mooroopnaanglican.com</a></p></section><p class="copyright">© 2026 Saint Alban's Anglican Church</p></div></footer></body></html>)HTM";
   return html;
 }
 int main(int argc,char** argv) {

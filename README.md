@@ -1,9 +1,18 @@
-# Saint Alban's Anglican Church — Mooroopna
+# Saint Alban's Anglican Church — website clone preview
 
-A C++17-generated, static GitHub Pages **preview** of the church's public website.
+This repository generates a static preview of the current church website using C++17.
+It is separate from the church's currently hosted production site, and **does not change DNS or email**.
 
-The C++ generator is \`src/sitegen.cpp\`. It produces all seven pages, with shared navigation and footer, from one source. Run \`make check\` to build and validate the pages under \`public/\`. GitHub Actions publishes that output to the repository's default GitHub Pages project URL.
+## Goal
 
-This is an initial design and content preview, not the final church website. Content has been summarised from the existing public site and must be reviewed by the parish before the production domain moves. No photos have been transferred. The previous site's contact form is not available in the preview; email and telephone links remain functional.
+Reproduce the existing public website, **not** redesign it: charcoal navigation, Saint Alban's logo, full-bleed church photograph, Sunday service lettering, the seven original navigation items, four partner links, call button, and existing page structure and contact details.
 
-**Do not change the church's DNS, MX records or custom domain while the preview is in development.**
+The logo and the homepage photograph in \`assets/\` are **temporary lower-resolution crops from screenshots supplied for comparison**. They must be replaced with the original full-resolution files before the hosting service is cancelled. The first draft of the internal pages still contains shortened summaries; content and layouts need a page-by-page visual comparison against the original.
+
+The original online contact form cannot operate on static hosting without a form service. The preview currently keeps a direct email link instead; do not claim the form is migrated.
+
+## Build
+
+Run \`make check\`. C++17 builds the static pages; GitHub Actions publishes the generated \`public/\` directory to the preview URL.
+
+Do not set a custom domain or edit the church's DNS until the replacement has been approved and a working contact form, assets and content are verified.

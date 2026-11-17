@@ -11,6 +11,7 @@ site: build/sitegen
 	./build/sitegen public
 	mkdir -p public/assets
 	cp assets/site.css public/assets/site.css
+	cp assets/saint-albans-logo.webp assets/church-building-preview.webp public/assets/
 check: site
 	@set -eu; for page in $(PAGES); do test -s "public/$$page"; done
 	@test -s public/assets/site.css
