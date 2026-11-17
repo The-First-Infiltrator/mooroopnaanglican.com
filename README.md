@@ -16,3 +16,9 @@ The original online contact form cannot operate on static hosting without a form
 Run \`make check\`. C++17 builds the static pages; GitHub Actions publishes the generated \`public/\` directory to the preview URL.
 
 Do not set a custom domain or edit the church's DNS until the replacement has been approved and a working contact form, assets and content are verified.
+
+## Original-source fidelity pass — 17 November 2026
+
+The homepage HTML obtained from the currently hosted builder identifies the platform as Dotster / `mywebsitebuilder.com`, provides exact source URLs for the church logo and main photograph, identifies **Roboto Condensed** headings and **Cabin** body text, and includes the actual navigation / footer link destinations. The preview now loads those two images from their original builder CDN instead of showing the screenshot crops and restores the red Sunday lettering as live HTML text.
+
+**Temporary dependency:** Both images still point to the old hosting provider. They must be downloaded to `assets/` and referenced locally before cancelling that provider. Other pages still require their original HTML and photographs for a genuinely accurate clone. The existing domain and email remain unchanged.
