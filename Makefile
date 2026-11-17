@@ -18,6 +18,9 @@ check: site
 	@grep -q '9.30am' public/index.html
 	@grep -q '8ab185272c1c4bf893969645e8657c7e' public/index.html
 	@grep -q '8d2d717d93c94bf98dea53a1b1d94a2b' public/assets/site.css
+	@grep -q 'class="service-heading"' public/index.html
+	@grep -q 'Sundays 9.30am &amp;' public/index.html
+	@grep -q 'position:absolute;top:0;left:0' public/assets/site.css
 	@echo 'All seven generated pages verified'
 clean:
 	rm -rf build public

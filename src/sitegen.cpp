@@ -72,7 +72,7 @@ std::string make_html(const Page& p) {
   }
   html += R"HTM(<a href="https://www.bendigoanglican.org.au/">Anglican Diocese of Bendigo</a><a href="https://www.gslp.com.au/programs/family-haven-mooroopna/">Family Haven</a><a href="https://www.teenchallenge.com.au/">Teen Challenge</a><a href="https://orangesky.org.au/">Orange Sky</a><a class="call" href="tel:+61358252031">Call</a></nav></div></header><main id="main">)HTM";
   if (is_home) {
-    html += R"HTM(<section class="photo-hero" aria-label="Saint Alban's church building"><h1 class="visually-hidden">Sundays 9.30am &amp; 5pm</h1><div class="mobile-services" aria-hidden="true">Sundays 9.30am &amp; 5pm</div></section>)HTM";
+    html += R"HTM(<section class="photo-hero" aria-label="Saint Alban's church building"><h1 class="visually-hidden">Saint Alban's Anglican Church, Mooroopna</h1><h2 class="service-heading">Sundays 9.30am &amp;<span>5pm</span></h2></section>)HTM";
   } else {
     html += "<div class=\"page-body\"><div class=\"content\">";
     html += "<h1 class=\"page-title\">" + p.heading + "</h1>";
