@@ -20,7 +20,7 @@ check: site
 	@grep -q '8d2d717d93c94bf98dea53a1b1d94a2b' public/assets/site.css
 	@grep -q 'class="service-heading"' public/index.html
 	@grep -q 'Sundays 9.30am &amp;' public/index.html
-	@grep -q 'position:absolute;top:0;left:0' public/assets/site.css
+	@grep -q 'position:fixed;top:0;left:0' public/assets/site.css
 	@grep -q "is-scrolled" public/index.html
 	@grep -q "background-position:center center" public/assets/site.css
 	@echo 'All seven generated pages verified'
